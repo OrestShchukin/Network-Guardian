@@ -101,6 +101,33 @@
                 </ul>          
             </div>
         </div>
+        <div class="scanner-results scanner-results-active">
+            <div class="scanner-results-text">
+                <h3>Results for: <span id="results-ip"></span></h3> 
+                <ul class="scanner-open-ports">
+                    <li>23 - Port is open</li>
+                    <li>144 - Port is open</li>
+                    <li>443 - Port is open</li>
+                </ul>
+            </div>
+
+            <div class="scanner-results-loader fulfilling-bouncing-circle-spinner">
+                <div class="circle"></div>
+                <div class="orbit"></div>
+            </div>
+        </div>
+        <div class="headline">
+            <h2>You can also scan your <span>network security!</span></h2>
+        </div>
+        <div class="vulnerability-scanner">
+            
+            <form action="data.json" method="post" class="info-enter-block-form">
+                <label for="domain-ip">Domain/IP</label>
+                <input type="text" name="domain-ip" id="domain-ip" placeholder="172.212.111.84">
+                <button type="submit" class="submit-button check-button">Check</button>
+        </div>
+        
+        
         
 
         

@@ -40,6 +40,10 @@ main{
     text-decoration: none;
     max-width: 1040px;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 var(--main-padding);
     /* overflow-x: hidden; */  
 }
 
@@ -113,7 +117,8 @@ nav{
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: var(--main-padding);
-    padding: var(--main-padding);
+    padding: var(--main-padding) 0;
+    width: 100%;
 }
 
 .scanner > div{
@@ -121,6 +126,12 @@ nav{
     padding: var(--main-padding);
     border-radius: var(--main-padding);
 }
+
+
+.vulnerability-scanner{
+
+}
+
 
 .info-enter-block-form{
     display: flex;
@@ -160,7 +171,7 @@ nav{
     margin: 1.5rem 0 0 0;
 }
 
-.scanner-submit-area button[type="submit"]{
+.scanner-submit-area button[type="submit"], .check-button{
     border: none;
     padding: calc(var(--main-padding)/2.3) calc(var(--main-padding)*2.2);
     background-color: var(--text-color-second);
@@ -187,3 +198,179 @@ nav{
     color: var(--text-color-fourth);
     padding: 0 0.5rem;
 }
+
+/* Scanner Results */
+
+.scanner-results{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding: var(--main-padding);
+    border-radius: var(--main-padding);
+    background-color: var(--background-color-second);
+    min-height: 150px;
+}
+
+
+.scanner-results-text{
+    display: none;
+}
+.scanner-results-text > h3{
+    text-align: center;
+}
+
+.scanner-results-active .scanner-results-text{
+    display: block;
+}
+.scanner-results-active .scanner-results-loader{
+    display: none;
+}
+
+.scanner-open-ports{
+    margin-top: var(--main-padding);
+    padding: var(--main-padding);
+    border-radius: var(--main-padding);
+    background-color: var(--text-color-third);
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+}
+
+.scanner-open-ports > li{
+    padding-left: var(--main-padding);
+}
+
+
+/* Loader */
+.scanner-results-loader{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%) !important;
+}
+
+
+.fulfilling-bouncing-circle-spinner, .fulfilling-bouncing-circle-spinner * {
+    box-sizing: border-box;
+  }
+
+  .fulfilling-bouncing-circle-spinner {
+    height: 60px;
+    width: 60px;
+    animation: fulfilling-bouncing-circle-spinner-animation infinite 4000ms ease;
+  }
+
+  .fulfilling-bouncing-circle-spinner .orbit {
+    height: 60px;
+    width: 60px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+    border: calc(60px * 0.03) solid var(--text-color-second);
+    animation: fulfilling-bouncing-circle-spinner-orbit-animation infinite 4000ms ease;
+  }
+
+  .fulfilling-bouncing-circle-spinner .circle {
+    height: 60px;
+    width: 60px;
+    color: var(--text-color-second);
+    display: block;
+    border-radius: 50%;
+    position: relative;
+    border: calc(60px * 0.1) solid var(--text-color-second);
+    animation: fulfilling-bouncing-circle-spinner-circle-animation infinite 4000ms ease;
+    transform: rotate(0deg) scale(1);
+  }
+
+  @keyframes fulfilling-bouncing-circle-spinner-animation {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes fulfilling-bouncing-circle-spinner-orbit-animation {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1);
+    }
+    62.5% {
+      transform: scale(0.8);
+    }
+    75% {
+      transform: scale(1);
+    }
+    87.5% {
+      transform: scale(0.8);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  @keyframes fulfilling-bouncing-circle-spinner-circle-animation {
+    0% {
+      transform: scale(1);
+      border-color: transparent;
+      border-top-color: inherit;
+    }
+    16.7% {
+      border-color: transparent;
+      border-top-color: initial;
+      border-right-color: initial;
+    }
+    33.4% {
+      border-color: transparent;
+      border-top-color: inherit;
+      border-right-color: inherit;
+      border-bottom-color: inherit;
+    }
+    50% {
+      border-color: inherit;
+      transform: scale(1);
+    }
+    62.5% {
+      border-color: inherit;
+      transform: scale(1.4);
+    }
+    75% {
+      border-color: inherit;
+      transform: scale(1);
+      opacity: 1;
+    }
+    87.5% {
+      border-color: inherit;
+      transform: scale(1.4);
+    }
+    100% {
+      border-color: transparent;
+      border-top-color: inherit;
+      transform: scale(1);
+    }
+  }
+
+
+
+  .vulnerability-scanner{
+    background-color: var(--background-color-second);
+    width: 100%;
+    border-radius: var(--main-padding);
+    margin: var(--main-padding) 0;
+  }
+
+  .vulnerability-scanner h2{
+    text-align: center;
+    padding: var(--main-padding);
+  }
+
+  .check-button{
+    width: 120px;
+    margin: var(--main-padding) 0 0  0;
+  }
