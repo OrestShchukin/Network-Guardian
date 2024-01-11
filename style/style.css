@@ -10,6 +10,8 @@
     text-decoration: none;
     scroll-behavior: smooth;
     color: var(--text-color-main);
+    font-size: var(--font-size-main);
+
 }
 
 h2, h2 span{
@@ -20,16 +22,29 @@ h2, h2 span{
 :root{
     --font-family-main: 'Roboto', sans-serif;
     --font-family-second: 'Inter', sans-serif;
+    --small-headline-font-size-main: 1.2rem;
+    --font-weight-bold: 800;
     --text-color-main:#000000;
     --text-color-second: #8953EB;
     --text-color-third: #ffffff;
     --text-color-fourth: #7027F4;
     --background-color-second: #8953EB24;
+    --background-color-third: #F1F0F0;
+    --border-color-first: #00000040;
+    --border-color-second: #00000010;
+
+    --port-open-color:#46A62E;
+    --port-closed-color: red;
     --main-padding: 1rem;
     
 
+    
     --header-height: 50px;
     --headline-padding: 30px 20px;
+    --font-size-main: 1rem;
+    --font-size-small-main: 0.9rem;
+    --font-size-bigger-main: 1.1rem;
+    --font-size-bigger-second: 1.6rem;
     --headline-font-size: 4rem;
     --headline-font-size-small: 1.3rem;
 }
@@ -105,6 +120,7 @@ nav{
 }
 
 .headline h2 span{
+  font-size: var(--headline-font-size);
     color: var(--text-color-second);
 }
 .headline h5{
@@ -128,11 +144,6 @@ nav{
 }
 
 
-.vulnerability-scanner{
-
-}
-
-
 .info-enter-block-form{
     display: flex;
     flex-direction: column;
@@ -148,11 +159,12 @@ nav{
     padding: calc(var(--main-padding)/2);
     border-radius: calc(var(--main-padding)/2);
     border: none;
+    font-size: var(--font-size-small-main);
 }
 
 .info-enter-block-form label{
     padding: 0 0 0.2rem 0.4rem;
-    font-size: 0.9rem;
+    font-size: var(--font-size-small-main);
 }
 .info-enter-block-form label:not(:first-child){
     margin: 0.8rem 0 0 0;
@@ -177,6 +189,7 @@ nav{
     background-color: var(--text-color-second);
     color: var(--text-color-third);
     border-radius: calc(var(--main-padding)/1.4);
+    font-size: var(--font-size-small-main);
 }
 
 
@@ -184,6 +197,7 @@ nav{
 .common-ports-block h3{
     text-align: center;
     padding: 0 0 1rem 0;
+    font-size: var(--font-size-bigger-main);
 }
 .common-ports-block ul{
     list-style: none;
@@ -215,9 +229,13 @@ nav{
 
 .scanner-results-text{
     display: none;
+
 }
 .scanner-results-text > h3{
     text-align: center;
+    font-size: var(--small-headline-font-size-main);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-bigger-second);
 }
 
 .scanner-results-active .scanner-results-text{
@@ -227,135 +245,89 @@ nav{
     display: none;
 }
 
-.scanner-open-ports{
+.scanner-results-header{
     margin-top: var(--main-padding);
-    padding: var(--main-padding);
+    
     border-radius: var(--main-padding);
-    background-color: var(--text-color-third);
+    gap: var(--main-padding);
     display: flex;
-    flex-direction: column;
     list-style: none;
+}
+
+.scanner-results-header li{
+  display: flex;
+  flex-direction: column;
+  flex: 2;
+
+}
+
+.scanner-results-header li:first-of-type{
+  flex: 3;
+}
+
+.scanner-results-header p:first-of-type{
+  font-size: var(--font-size-small-main);
+  padding-left: calc(var(--main-padding)/2);
+  text-align: start;
+}
+.scanner-results-header p:nth-of-type(2){
+  background-color: var(--text-color-third);
+  padding: calc(var(--main-padding)/2);
+  border-radius: calc(var(--main-padding)/2);
+  text-align: start;
 }
 
 .scanner-open-ports > li{
     padding-left: var(--main-padding);
 }
 
+.scanner-results table{
+  margin: var(--main-padding) 0 0 0;
+  border-collapse: collapse;
+  background-color: var(--background-color-third);
+  border-radius: var(--main-padding);
+  width: 100%;
+  overflow: hidden;
 
-/* Loader */
-.scanner-results-loader{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%) !important;
+}
+
+.scanner-results th,td{
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  padding: var(--main-padding);
+  border-bottom: 1px solid var(--border-color-second);
 }
 
 
-.fulfilling-bouncing-circle-spinner, .fulfilling-bouncing-circle-spinner * {
-    box-sizing: border-box;
-  }
+.scanner-results table th{
+  border-bottom: 1px solid var(--border-color-first);
 
-  .fulfilling-bouncing-circle-spinner {
-    height: 60px;
-    width: 60px;
-    animation: fulfilling-bouncing-circle-spinner-animation infinite 4000ms ease;
-  }
+}
 
-  .fulfilling-bouncing-circle-spinner .orbit {
-    height: 60px;
-    width: 60px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    border-radius: 50%;
-    border: calc(60px * 0.03) solid var(--text-color-second);
-    animation: fulfilling-bouncing-circle-spinner-orbit-animation infinite 4000ms ease;
-  }
+.scanner-results table td:nth-of-type(2){
+  text-transform: uppercase;
+}
 
-  .fulfilling-bouncing-circle-spinner .circle {
-    height: 60px;
-    width: 60px;
-    color: var(--text-color-second);
-    display: block;
-    border-radius: 50%;
-    position: relative;
-    border: calc(60px * 0.1) solid var(--text-color-second);
-    animation: fulfilling-bouncing-circle-spinner-circle-animation infinite 4000ms ease;
-    transform: rotate(0deg) scale(1);
-  }
+.scanner-results th{
+  text-transform: uppercase;
+  color: var(--text-color-fourth);
+}
 
-  @keyframes fulfilling-bouncing-circle-spinner-animation {
-    0% {
-      transform: rotate(0deg);
-    }
+.scanner-results tr{
+  display: flex;
+  width: 100%;
+  flex: 1;
+}
 
-    100% {
-      transform: rotate(360deg);
-    }
-  }
-
-  @keyframes fulfilling-bouncing-circle-spinner-orbit-animation {
-    0% {
-      transform: scale(1);
-    }
-    50% {
-      transform: scale(1);
-    }
-    62.5% {
-      transform: scale(0.8);
-    }
-    75% {
-      transform: scale(1);
-    }
-    87.5% {
-      transform: scale(0.8);
-    }
-    100% {
-      transform: scale(1);
-    }
-  }
-
-  @keyframes fulfilling-bouncing-circle-spinner-circle-animation {
-    0% {
-      transform: scale(1);
-      border-color: transparent;
-      border-top-color: inherit;
-    }
-    16.7% {
-      border-color: transparent;
-      border-top-color: initial;
-      border-right-color: initial;
-    }
-    33.4% {
-      border-color: transparent;
-      border-top-color: inherit;
-      border-right-color: inherit;
-      border-bottom-color: inherit;
-    }
-    50% {
-      border-color: inherit;
-      transform: scale(1);
-    }
-    62.5% {
-      border-color: inherit;
-      transform: scale(1.4);
-    }
-    75% {
-      border-color: inherit;
-      transform: scale(1);
-      opacity: 1;
-    }
-    87.5% {
-      border-color: inherit;
-      transform: scale(1.4);
-    }
-    100% {
-      border-color: transparent;
-      border-top-color: inherit;
-      transform: scale(1);
-    }
-  }
-
+.table-header td{
+  background-color: var(--text-color-third);
+  justify-content: start;
+  font-size: var(--small-headline-font-size-main);
+  font-weight:  var(--font-weight-bold);
+  padding: calc(var(--main-padding)/1.5) var(--main-padding);
+}
 
 
   .vulnerability-scanner{
@@ -374,3 +346,132 @@ nav{
     width: 120px;
     margin: var(--main-padding) 0 0  0;
   }
+
+
+  
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  /* Loader */
+.scanner-results-loader{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%) !important;
+}
+
+
+.fulfilling-bouncing-circle-spinner, .fulfilling-bouncing-circle-spinner * {
+  box-sizing: border-box;
+}
+
+.fulfilling-bouncing-circle-spinner {
+  height: 60px;
+  width: 60px;
+  animation: fulfilling-bouncing-circle-spinner-animation infinite 4000ms ease;
+}
+
+.fulfilling-bouncing-circle-spinner .orbit {
+  height: 60px;
+  width: 60px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  border: calc(60px * 0.03) solid var(--text-color-second);
+  animation: fulfilling-bouncing-circle-spinner-orbit-animation infinite 4000ms ease;
+}
+
+.fulfilling-bouncing-circle-spinner .circle {
+  height: 60px;
+  width: 60px;
+  color: var(--text-color-second);
+  display: block;
+  border-radius: 50%;
+  position: relative;
+  border: calc(60px * 0.1) solid var(--text-color-second);
+  animation: fulfilling-bouncing-circle-spinner-circle-animation infinite 4000ms ease;
+  transform: rotate(0deg) scale(1);
+}
+
+@keyframes fulfilling-bouncing-circle-spinner-animation {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fulfilling-bouncing-circle-spinner-orbit-animation {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1);
+  }
+  62.5% {
+    transform: scale(0.8);
+  }
+  75% {
+    transform: scale(1);
+  }
+  87.5% {
+    transform: scale(0.8);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes fulfilling-bouncing-circle-spinner-circle-animation {
+  0% {
+    transform: scale(1);
+    border-color: transparent;
+    border-top-color: inherit;
+  }
+  16.7% {
+    border-color: transparent;
+    border-top-color: initial;
+    border-right-color: initial;
+  }
+  33.4% {
+    border-color: transparent;
+    border-top-color: inherit;
+    border-right-color: inherit;
+    border-bottom-color: inherit;
+  }
+  50% {
+    border-color: inherit;
+    transform: scale(1);
+  }
+  62.5% {
+    border-color: inherit;
+    transform: scale(1.4);
+  }
+  75% {
+    border-color: inherit;
+    transform: scale(1);
+    opacity: 1;
+  }
+  87.5% {
+    border-color: inherit;
+    transform: scale(1.4);
+  }
+  100% {
+    border-color: transparent;
+    border-top-color: inherit;
+    transform: scale(1);
+  }
+}

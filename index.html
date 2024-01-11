@@ -103,12 +103,50 @@
         </div>
         <div class="scanner-results scanner-results-active">
             <div class="scanner-results-text">
-                <h3>Results for: <span id="results-ip"></span></h3> 
-                <ul class="scanner-open-ports">
-                    <li>23 - Port is open</li>
-                    <li>144 - Port is open</li>
-                    <li>443 - Port is open</li>
+                <h3>Results<h3> 
+                <ul class="scanner-results-header">
+                    <li>
+                        <p>Domain/IP</p>
+                        <p>172.212.111.84</p>
+                    </li>
+                    <li>
+                        <p>Ports scanned:</p>
+                        <p>3</p>
+                    </li>
+                    <li>
+                        <p>Open ports:</p>
+                        <p>2</p>
+                    </li>
                 </ul>
+                <table>
+                    <tr class="table-header">
+                        <td>Ports</td>
+                    </tr>
+                    <tr>
+                        <th>Port number</th>
+                        <th>State</th>
+                        <th>Detect SV</th>
+                        <th>Service Name</th>
+                    </tr>
+                    <tr>
+                        <td>80</td>
+                        <td>OPEN</td>
+                        <td>Active</td>
+                        <td>HTTP</td>
+                    </tr>
+                    <tr>
+                        <td>123</td>
+                        <td>closed</td>
+                        <td>Active</td>
+                        <td>HTTP</td>
+                    </tr>
+                    <tr>
+                        <td>80</td>
+                        <td>OPEN</td>
+                        <td>Active</td>
+                        <td>HTTP</td>
+                    </tr>
+                </table>
             </div>
 
             <div class="scanner-results-loader fulfilling-bouncing-circle-spinner">
