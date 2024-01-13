@@ -15,7 +15,7 @@ const portsData ={
 let userData = {};
 
 scannerForm.addEventListener('submit', (e) =>{
-    e.preventDefault();
+    //e.preventDefault();
 
     const getInfo = (input, name) =>{
         const element = input.querySelector(`[name="${name}"]`);
@@ -26,6 +26,7 @@ scannerForm.addEventListener('submit', (e) =>{
     userData.detectOs = getInfo(scannerForm, "detect-os");
     userData.detectSV = getInfo(scannerForm, "detect-sv");
     console.log(userData); //об'єкт userdata містить всю інфу від юзера
+    scannerResultsLoad();
 })
 
 

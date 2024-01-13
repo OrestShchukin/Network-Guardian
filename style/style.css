@@ -97,6 +97,7 @@ nav{
     list-style: none;
     justify-content: space-around;
     align-items: center;
+    z-index: 3;
     
 }
 
@@ -106,6 +107,8 @@ nav{
     align-items: center;
     padding: 0 15px;
     font-size: var(--headline-font-size-small);
+    font-size: calc(var(--font-size-main)*1.2);
+    cursor: pointer;
 }
 
 .headline{
@@ -116,6 +119,7 @@ nav{
     margin: 0 auto;
     padding: var(--headline-padding) ;
     align-items: center;
+    margin: 2rem 0 0 0;
 }
 
 .headline h2{
@@ -401,7 +405,7 @@ nav{
   border: none;
   /* padding: calc(var(--main-padding)/1.2) calc(var(--main-padding)*5); */
   padding: calc(var(--main-padding)/2) calc(var(--main-padding)*3);
-  margin: var(--main-padding) 0 0 0;
+  margin: calc(var(--main-padding)*1.5) 0 0 0;
   background-color: var(--text-color-second);
   color: var(--text-color-third);
   font-size: var(--font-size-small-main);
