@@ -15,7 +15,7 @@ const portsData ={
 let userData = {};
 
 scannerForm.addEventListener('submit', (e) =>{
-    e.preventDefault();
+    //e.preventDefault();
 
     const getInfo = (input, name) =>{
         const element = input.querySelector(`[name="${name}"]`);
@@ -26,6 +26,7 @@ scannerForm.addEventListener('submit', (e) =>{
     userData.detectOs = getInfo(scannerForm, "detect-os");
     userData.detectSV = getInfo(scannerForm, "detect-sv");
     console.log(userData); //об'єкт userdata містить всю інфу від юзера
+    scannerResultsLoad();
 })
 
 
@@ -106,27 +107,24 @@ let scanResultsInput = `
 const scanResults = document.querySelector('.vulnerability-results');
 
 function processTextResultText(inputText) {
-    const header = "<h2>Report Summary</h2>";
-    const sslInfoIndex = inputText.indexOf('SSL Info:');
-    const serverIndex = inputText.lastIndexOf('Server:');
-
-    const sectionOne = inputText.substring(0, sslInfoIndex);
-    const sectionTwo = inputText.substring(sslInfoIndex, serverIndex);
-   
-    const sectionThree = inputText.substring(serverIndex);
-
+    const header = "<h2 >Report Summary</h2>";
+    
     const urlRegex = /(https?:\/\/[^\s]+)/g;
 
     const linkify = (text) => text.replace(urlRegex, function(url) {
         return '<br>&emsp;<a href="' + url + '" target="_blank" class="highlighted-link">' + url + '</a>';
     });
     
-    const text = header +
-        `<span class="section-one">${sectionOne.replace(/---|\+/g, '').replace(/(\r\n|\n|\r)/gm, '<br>').replace(/-/, '')}</span>` +
-        `<span class="section-two">${sectionTwo.replace(/---|\+/g, '').replace(/:/,': <br>').replace(/(\r\n|\n|\r)/gm, '<br>')}</span>` +
-        `<span class="section-three">${linkify(sectionThree.replace(/\+ \/:/g, '&bull;').replace(/(\r\n|\n|\r)/gm, '<br>').replace(/\+/, '<br>'))}</span>`;
+    let text = inputText;
 
-        return text;
+    // Replace + /: with bullet point, --- and + with nothing, newlines with <br>, and - with a nothing
+    text = text.replace(/\+ \/:/g, '&bull;').replace(/---|\+/g, '').replace(/(\r\n|\n|\r)/gm, '<br>').replace(/-/, '');
+    text = text.replace(/(SSL Info:)/g, '$1<br>');
+    text = `<span class="scan-results-main-section">${text}</span>`;
+   
+    text = linkify(text);
+
+    return header + text;
 }
 
 const vulnerabilityResDiv = document.createElement('div');
