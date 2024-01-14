@@ -554,12 +554,16 @@ nav{
   flex: 3;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
 
 .why-we-text p{
   font-size: var(--font-size-main);
   font-size: var(--instruction-font-size-big);
 
+}
+.why-we-text-vulnerability p{
+  font-size: 1.2rem;
 }
 
 .why-we-image{
