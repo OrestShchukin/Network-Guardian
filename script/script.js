@@ -66,7 +66,6 @@ commonPortsList.addEventListener('click', commonPortsAdd);
 const scannerResultsTable = document.querySelector(".scanner-results table");
 const scannerResultsTableElements = document.querySelectorAll(".scanner-results-text table td");
 const scannerResultsLoad = () => {
-    console.log("Heeeeeeeeeeee haw");
     scannerResultsTableElements.forEach(element => {
         const content = element.textContent.toLowerCase();
         element.style.color = content == "open" ? "var(--port-open-color)" : content == "closed" ? "var(--port-closed-color)" : "";
