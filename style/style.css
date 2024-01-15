@@ -324,6 +324,7 @@ nav{
 }
 
 .scanner-results th,td{
+  position: relative;
   display: flex;
   flex: 1;
   align-items: center;
@@ -447,7 +448,6 @@ nav{
 }
 .scan-results-output button[type="submit"]:active {
   transform: scale(0.97);
-  
 }
 
 /* Instruction */
@@ -495,6 +495,28 @@ nav{
 }
 
 /* Why we */
+
+.ask-ai{
+  position: absolute;
+  display: flex;
+  left: var(--main-padding);
+  top: 50%;
+  transform: translateY(-50%);
+  box-shadow: var(--box-shadow-main);
+  border: none;
+  padding: calc(var(--main-padding)/2.3);
+  background-color: var(--text-color-second);
+  color: var(--text-color-third);
+  border-radius: calc(var(--main-padding)/1.4);
+  font-size: var(--font-size-small-main);
+  align-self: flex-start;
+  justify-self: flex-start;
+  cursor: pointer;
+}
+
+.ask-ai:active {
+  transform: translateY(-50%) scale(0.97) ;
+}
 
 
 .information-block-header{
